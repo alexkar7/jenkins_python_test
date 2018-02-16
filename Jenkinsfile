@@ -1,20 +1,20 @@
-pipeline {
+pipiline {
     agent any
     stages {
         stage('Build') {
             steps {
-                sh 'echo "$(uname -a)"'
+                echo 'Building'
             }
         }
-    }
-    post {
-        always {
-            sh 'echo "I run always :D"'
+        stage('Test') {
+            steps {
+                echo 'Testing'
+            }
         }
-        success {
-            mail to: 'alejandro.carmonamejia@gmail.com',
-            subject: "Success Pipiline: ${currentBuild.fullDisplayName}",
-            body: "Success Pipiline: ${currentBuild.fullDisplayName}"
+        stage('Deploy') {
+            steps {
+                echo 'Deplying'
+            }
         }
     }
 }

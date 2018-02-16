@@ -1,15 +1,20 @@
 pipeline {
     agent any
     stages {
-        stage('Test') {
+        stage('Build') {
             steps {
-                sh './gradlew check'
+                sh 'echo "$(uname -a)"'
             }
         }
     }
     post {
         always {
-            junit 'build/reports/**/*.xml'
+            sh 'echo "I run always :D"'
+        }
+        success {
+            mail to: 'alejandro.carmonamejia@gmail.com',
+            subject: "Success Pipiline: ${currentBuild.fullDisplayName}",
+            body: "Success Pipiline: ${currentBuild.fullDisplayName}"
         }
     }
 }

@@ -9,7 +9,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'printenv'
+                sh 'echo $VAR1'
+                sh 'echo $VAR2'
             }
         }
     }

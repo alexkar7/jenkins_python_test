@@ -1,11 +1,15 @@
 pipeline {
-    agent {
-        docker { image 'node:7-alpine' }
-    }
+    agent any
+    
+    VAR1 = 'Hola'
+    VAR2 = 'Mundo'
+    
     stages {
-        stage('Test') {
+        stage('Build') {
             steps {
-                sh 'node --version'
+                sh 'printenv'
+                sh 'echo VAR1'
+                sh 'echo VAR2'
             }
         }
     }

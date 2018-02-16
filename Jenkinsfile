@@ -1,11 +1,9 @@
 pipeline {
     agent any
     stages {
-        stage('build') {
+        stage('Test') {
             steps {
-                retry(5) {
-                    sh 'echo "Trying 5 times ..."'
-                }
+                sh 'echo "Fail!"; exit 1'
             }
         }
     }
@@ -22,9 +20,9 @@ pipeline {
         unstable {
             echo 'This will run only if the run was marked as unstable'
         }
-        change {
+        changed {
             echo 'This will run only if the state of the Pipeline has changed'
-            echo 'For example, if the Pipeline was previously failing bit is now successful'
+            echo 'For example, if the Pipeline was previously failing but is now successful'
         }
     }
 }

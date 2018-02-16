@@ -11,6 +11,11 @@ pipeline {
                 sh 'echo "Testing"'
             }
         }
+        stage('Sanity check') {
+            steps {
+                input "Deploy to production?"
+            }
+        }
         stage('Deploy') {
             steps {
                 sh 'echo "Deploying"'
